@@ -20,7 +20,7 @@ require("sdk/tabs").on("ready", runScript);
  
 function runScript(tab) {
   tab.attach({
-	contentScriptFile: self.data.url("ut.js"),
+	contentScriptFile: self.data.url("at.js"),
   });
 }
 var panel = panels.Panel({
