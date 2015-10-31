@@ -1,4 +1,5 @@
 var { ToggleButton } = require('sdk/ui/button/toggle');
+var ss = require("sdk/simple-storage"); //simple-storage
 var panels = require("sdk/panel");
 var self = require("sdk/self");
 var tabs = require("sdk/tabs");
@@ -51,7 +52,7 @@ pageMod.PageMod({
 
 //Events
 //load list from storage
-var lista = []; 
+//var lista = ss.storage.myList; 
 var myExtension = {
   myListener: function(evt) {
     if(evt.target.getAttribute("attribute1") == "requestList"){
@@ -59,14 +60,14 @@ var myExtension = {
             sendList(evt);
           } else{
             //returnedList
-            lista = evt.target.getAttribute("attribute1");
+            ss.storage.myList = evt.target.getAttribute("attribute1");
           }
         }
       };
       document.addEventListener("MyExtensionEvent", function(e) { myExtension.myListener(e); }, false, true);
 // The last value is a Mozilla-specific value to indicate untrusted content is allowed to trigger the event.
 function sendList(evt){
- evt.target.setAttribute("attribute1", lista);
+ evt.target.setAttribute("attribute1", ss.storage.myList);
 
  var doc = evt.target.ownerDocument;
 
