@@ -23,14 +23,19 @@ if (document.URL.indexOf("apps.facebook.com") != -1 && document.URL.indexOf("tod
 	document.getElementById("rightCol").innerHTML = app;
 }
 
-function adfly(){
-	document.getElementById('skip_ad_button').click();
+if (document.URL.indexOf('adf.ly/') != -1 && document.URL.indexof('adf.ly/ad/locked?url=') == -1){
+	setTimeout(function(){
+	if(document.getElementById('skip_ad_button') {
+		document.getElementById('skip_ad_button').click();
+	}
+	}, 1000);
+} else if (document.URL.indexof('adf.ly/ad/locked?url=') != -1){
+	setTimeout(function(){
+	if(document.getElementsByTagName('a')[0]) {
+		document.getElementsByTagName('a')[0].click();
+	}
+	}, 1000);
 }
-
-if (document.URL.indexOf('adf.ly/') != -1){
-	window.setTimeout(adfly,15000);
-}
-
 
 //Events
 document.addEventListener("MyAnswerEvent",function(e) { ExtensionAnswer(e); },false);
