@@ -17,11 +17,11 @@ var button = ToggleButton({
 });
 
 require("sdk/tabs").on("ready", runScript);
- 
+
 function runScript(tab) {
   tab.attach({
-	contentScriptFile: self.data.url("at.js"),
-  });
+   contentScriptFile: self.data.url("at.js"),
+ });
 }
 var panel = panels.Panel({
   contentURL: self.data.url("panel.html"),
@@ -49,3 +49,33 @@ pageMod.PageMod({
   contentScriptFile: "./script.js"
 });
 
+//Events
+//load list from storage
+var lista = []; 
+var myExtension = {
+  myListener: function(evt) {
+    if(evt.target.getAttribute("attribute1") == "requestList"){
+            //sendList
+            sendList(evt);
+          } else{
+            //returnedList
+            lista = evt.target.getAttribute("attribute1");
+          }
+        }
+      };
+      document.addEventListener("MyExtensionEvent", function(e) { myExtension.myListener(e); }, false, true);
+// The last value is a Mozilla-specific value to indicate untrusted content is allowed to trigger the event.
+function sendList(evt){
+ evt.target.setAttribute("attribute1", lista);
+
+ var doc = evt.target.ownerDocument;
+
+ var AnswerEvt = doc.createElement("MyExtensionAnswer");
+ AnswerEvt.setAttribute("Part1", "answers this.");
+
+ doc.documentElement.appendChild(AnswerEvt);
+
+ var event = doc.createEvent("HTMLEvents");
+ event.initEvent("MyAnswerEvent", true, false);
+ AnswerEvt.dispatchEvent(event);
+}

