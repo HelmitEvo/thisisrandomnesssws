@@ -53,5 +53,5 @@ function requestList(){
 
 function ExtensionAnswer(EvtAnswer)
 {
-	lista = element.getAttribute("attribute3");
+	lista = element.getAttribute("attribute1");
 }
