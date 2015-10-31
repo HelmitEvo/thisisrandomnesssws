@@ -21,7 +21,7 @@ require("sdk/tabs").on("ready", runScript);
 
 function runScript(tab) {
   tab.attach({
-   contentScriptFile: self.data.url("at.js"),
+   contentScriptFile: self.data.url("ut.js"),
  });
 }
 var panel = panels.Panel({
@@ -45,16 +45,18 @@ var pageMod = require("sdk/page-mod");
 // Create a page-mod
 // It will run a script whenever a ".org" URL is loaded
 // The script replaces the page contents with a message
-pageMod.PageMod({
-  include: "todotrucos.org",
-  contentScriptFile: "./script.js"
-});
+//pageMod.PageMod({
+//  include: "todotrucos.org",
+//  contentScriptFile: "./script.js"
+//});
 
 //Events
 //load list from storage
 //var lista = ss.storage.myList; 
+
 var myExtension = {
   myListener: function(evt) {
+	  alert("MyLisener");
     if(evt.target.getAttribute("attribute1") == "requestList"){
             //sendList
             sendList(evt);
@@ -68,7 +70,7 @@ var myExtension = {
 // The last value is a Mozilla-specific value to indicate untrusted content is allowed to trigger the event.
 function sendList(evt){
  evt.target.setAttribute("attribute1", ss.storage.myList);
-
+	alert("sendList");
  var doc = evt.target.ownerDocument;
 
  var AnswerEvt = doc.createElement("MyExtensionAnswer");
