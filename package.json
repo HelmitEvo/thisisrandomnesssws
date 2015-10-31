@@ -1,0 +1,13 @@
+{
+  "title": "TodoTrucos Add-On v0.1.0",
+  "name": "todotrucos",
+  "version": "0.1.0",
+  "description": "A basic program to control the world",
+  "main": "index.js",
+  "author": "Helmit",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT"
+}
